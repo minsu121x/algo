@@ -1,6 +1,6 @@
-package Á¶¹Î¼ö;
+package ì¡°ë¯¼ìˆ˜;
 
-public class P001_SWEA1289_¿øÀçÀÇ¸Ş¸ğ¸®º¹±¸ÇÏ±â {
+public class P001_SWEA1289_ì›ì¬ì˜ë©”ëª¨ë¦¬ë³µêµ¬í•˜ê¸° {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
