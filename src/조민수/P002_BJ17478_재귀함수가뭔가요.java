@@ -29,6 +29,7 @@ public class P002_BJ17478_재귀함수가뭔가요 {
 			System.out.println("라고 답변하였지.");
 			_n--;
 		}
+		System.out.println("라고 답변하였지.");
 		
 	}
 
