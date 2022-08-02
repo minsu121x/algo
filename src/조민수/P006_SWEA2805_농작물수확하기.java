@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-
 public class P006_SWEA2805_농작물수확하기 {
 
 	public static void main(String[] args) throws IOException {
@@ -23,7 +21,6 @@ public class P006_SWEA2805_농작물수확하기 {
 			
 			}
 			
-			//제일쉬운건 그냥 연산...
 			int result = 0;	
 			result=countfarm(farm);
 			System.out.println("#"+i+" "+result);

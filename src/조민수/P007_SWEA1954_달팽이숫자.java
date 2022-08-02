@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public class P007_SWEA1954_달팽이숫자 {
 	public static void main(String[] args) throws IOException {
-		//방향 잡고 
+		
 		//사이즈 기준 5면 5-4-4-3-3-2-2-1-1
 	
 		int tc=0;
