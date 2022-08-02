@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.StringTokenizer;
 
 public class P004_SWEA1208_Flatten {
 
@@ -15,18 +14,20 @@ public class P004_SWEA1208_Flatten {
 //		System.setIn(new FileInputStream("input1.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringBuilder sb = new StringBuilder();
 		
 		for(int i=0; i<10; i++) {	// 10개의 테스트 케이스 반복
 			ArrayList<Integer> list = new ArrayList<>();	// 상자가 쌓인 것을 list로 선언
 			int cnt = Integer.parseInt(br.readLine());	//	덤프 횟수
-			StringTokenizer st = new StringTokenizer(br.readLine());
+			String[] st = br.readLine().split(" ");
 			for(int j=0; j<100; j++) {	//	박스 초기화
-				list.add(Integer.parseInt(st.nextToken()));
+				list.add(Integer.parseInt(st[j]));
 			}
 			dump(list, cnt);	//	덤프 실행
-			bw.write("#" + (i+1) + " " + getDiff(list));	// 결과값 출력
-			bw.newLine();
+			sb.append("#" + (i+1) + " " + getDiff(list) + "\n"); // 결과값 저장
 		}
+		
+		bw.write(sb.toString());	// 결과값 출
 		
 		bw.flush();
 		bw.close();
