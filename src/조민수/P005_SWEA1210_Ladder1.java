@@ -11,14 +11,15 @@ public class P005_SWEA1210_Ladder1  {
 		int [][]ladder=new int[100][100];//사다리 값 저장 배열
 		int tc=10;//testcase
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));//입력값을 받아온다
-		
+	
 		for (int test = 1; test <=tc; test++) {//메인 탐색 동작 반복
 			int t=Integer.parseInt(br.readLine());//테스트 케이스(1~10)
 			int result=0;
 			for (int i = 0; i <100; i++) {
-				StringTokenizer st = new StringTokenizer(br.readLine());//사다리 한줄씩
+				String cur=br.readLine();
+				String[] st = cur.split(" ");//사다리 한줄씩
 				for (int j = 0; j <100; j++) {
-					ladder[i][j]=Integer.parseInt(st.nextToken());//사다리 값 저장
+					ladder[i][j]=Integer.parseInt(st[j]);//사다리 값 저장
 				}
 			}
 			for(int j=0;j<100;j++) {//마지막줄을 돌면서 도착점을 탐색

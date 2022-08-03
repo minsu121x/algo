@@ -38,10 +38,6 @@ public class P004_SWEA1208_Flatten {
 				int minIndex=box.indexOf(min);
 				box.set(maxIndex,max-1);//max값 하나 빼기
 				box.set(minIndex,min+1);//min값 하나 더하기
-//				if(box.get(maxIndex)-avg<=1&&box.get(maxIndex)-avg>=-1) {//오차범위 이내다
-//					result=box.get(Collections.max(box))-box.get(Collections.min(box));
-//					break;
-//				}
 			}
 			result=Collections.max(box)-Collections.min(box);
 			System.out.println("#"+i+" "+result);
