@@ -15,7 +15,7 @@ public class P013_SWEA1225_암호생성기 {
 		String sr="";
 		
 		
-		for(int tc=1;tc<=10;tc++) {
+	/*	for(int tc=1;tc<=10;tc++) {
 			sr=br.readLine();
 			System.out.println(Integer.parseInt(sr));
 			sr=br.readLine();
@@ -42,10 +42,10 @@ public class P013_SWEA1225_암호생성기 {
 				}
 				password.offer(num);
 			}
-		}
+		}*/
 		
 		
-		/*for(int tc=1;tc<=10;tc++) {
+		for(int tc=1;tc<=10;tc++) {
 			sr=br.readLine();
 			System.out.println(Integer.parseInt(sr));
 			sr=br.readLine();
@@ -82,7 +82,7 @@ public class P013_SWEA1225_암호생성기 {
 				password.offer(num);
 				System.out.println("#Cycle"+password.toString());
 			}
-		}*/
+		}
 	}
 
 }

@@ -9,28 +9,26 @@ public class P008_SWEA1873_상호의배틀필드 {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		System.setIn(new FileInputStream("input.txt"));
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		String st=br.readLine();
-		int tc=Integer.parseInt(st);
+		int tc=Integer.parseInt(st);//테스트 케이스
 		for(int Test=1;Test<=tc;Test++) {
 			st=br.readLine();
 			String[] ch=st.split(" ");
-			char tank='^';//기본값
-			int h=Integer.parseInt(ch[0]);
-			int w=Integer.parseInt(ch[1]);
-			System.out.println(h+" "+w);
+			char tank=' ';//기본값
+			int h=Integer.parseInt(ch[0]);//높이
+			int w=Integer.parseInt(ch[1]);//너비
 			int x=0;
 			int y=0;
 			char[][] map=new char[h][w];
 			for(int i=0;i<h;i++) {
 				st=br.readLine();
-				for(int j=0;j<w;j++) {
+				for(int j=0;j<w;j++) {//map에 저장하면서
 					char mapValue=st.charAt(j);
-					if(mapValue=='<'||mapValue=='>'||mapValue=='^'||mapValue=='v'){
+					if(mapValue=='<'||mapValue=='>'||mapValue=='^'||mapValue=='v'){//탱크가 나왔다
 						x=i;
 						y=j;
-						tank=mapValue;
+						tank=mapValue;//탱크 위치 및 방향 저장
 						//탱크 좌표값 저장
 					}
 					map[i][j]=mapValue;
@@ -61,14 +59,14 @@ public class P008_SWEA1873_상호의배틀필드 {
 					tank='<';
 					if(y-1>=0&&map[x][y-1]=='.') {//좌측이 존재하고 평지면
 						map[x][y]='.';//내자리는 평지해놓고
-						y=y-1;//올라가기
+						y=y-1;//좌로가기
 					}
 					break;
 				case 'R':
 					tank='>';
 					if(y+1<w&&map[x][y+1]=='.') {//우측이 존재하고 평지면
 						map[x][y]='.';//내자리는 평지해놓고
-						y=y+1;//올라가기
+						y=y+1;//우로가기
 					}
 					break;
 				case 'S':
@@ -77,11 +75,11 @@ public class P008_SWEA1873_상호의배틀필드 {
 					switch(tank) {
 					case '^':
 						Sx--;
-						while(Sx>=0) {
-							if(map[Sx][Sy]=='#')//강철벽
-								break;
-							else if(map[Sx][Sy]=='*') {
-								map[Sx][Sy]='.';
+						while(Sx>=0) {//포탄이 벽에 닿을때 까지
+							if(map[Sx][Sy]=='#')//강철벽을 만나면
+								break;//끝
+							else if(map[Sx][Sy]=='*') {//일반벽을 만나면
+								map[Sx][Sy]='.';//평지로 변환
 								break;
 							}
 							Sx--;
@@ -89,11 +87,11 @@ public class P008_SWEA1873_상호의배틀필드 {
 						break;
 					case 'v':
 						Sx++;
-						while(Sx<h) {
-							if(map[Sx][Sy]=='#')//강철벽
-								break;
-							else if(map[Sx][Sy]=='*') {
-								map[Sx][Sy]='.';
+						while(Sx<h) {//포탄이 벽에 닿을때 까지
+							if(map[Sx][Sy]=='#')//강철벽을 만나면
+								break;//끝
+							else if(map[Sx][Sy]=='*') {//일반벽을 만나면
+								map[Sx][Sy]='.';//평지로 변환
 								break;
 							}
 							Sx++;
@@ -101,11 +99,11 @@ public class P008_SWEA1873_상호의배틀필드 {
 						break;
 					case '<':
 						Sy--;
-						while(Sy>=0) {
-							if(map[Sx][Sy]=='#')//강철벽
-								break;
-							else if(map[Sx][Sy]=='*') {
-								map[Sx][Sy]='.';
+						while(Sy>=0) {//포탄이 벽에 닿을때 까지
+							if(map[Sx][Sy]=='#')//강철벽을 만나면
+								break;//끝
+							else if(map[Sx][Sy]=='*') {//일반벽을 만나면
+								map[Sx][Sy]='.';//평지로 변환
 								break;
 							}
 							Sy--;
@@ -113,11 +111,11 @@ public class P008_SWEA1873_상호의배틀필드 {
 						break;
 					case '>':
 						Sy++;
-						while(Sy<w) {
-							if(map[Sx][Sy]=='#')//강철벽
-								break;
-							else if(map[Sx][Sy]=='*') {
-								map[Sx][Sy]='.';
+						while(Sy<w) {//포탄이 벽에 닿을때 까지
+							if(map[Sx][Sy]=='#')//강철벽을 만나면
+								break;//끝
+							else if(map[Sx][Sy]=='*') {//일반벽을 만나면
+								map[Sx][Sy]='.';//평지로 변환
 								break;
 							}
 							Sy++;

@@ -33,7 +33,7 @@ public class P010_BJ11660_구간합구하기5 {
 			 for(int j=0;j<4;j++){
 				 xy[j]=Integer.parseInt(st[j]);
 			 }
-			for(int j=xy[0];j<=xy[2];j++) {
+			for(int j=xy[0];j<=xy[2];j++) {//알고리즘은 P009 구간합4 문제와 동일 각 줄마다 합을 구해서 행으로 for문 합함.  
 
 				result+=map[j][xy[3]]-map[j][xy[1]-1];
 			}
