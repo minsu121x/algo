@@ -37,4 +37,5 @@ public class P018_SWEA1228_암호문1 {
 		}
 	}
 
+	
 }

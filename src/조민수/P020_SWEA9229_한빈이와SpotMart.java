@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class P020_SWEA9229_한빈이와SpotMart {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		int tc= Integer.parseInt(br.readLine());
