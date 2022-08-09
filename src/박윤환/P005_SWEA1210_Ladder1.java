@@ -48,7 +48,7 @@ public class P005_SWEA1210_Ladder1 {
 	static int path(int[][] ladders, int j) {
 		int i = 0;
 		while(i < 99) {		// 제일 아래 도달할때까지 반복
-			int direction = 0;	// 좌, 우 방
+			int direction = 0;	// 좌, 우 방향을 나타내는 변수
 			while(j > 0 && ladders[i][j-1] == 1) {	// 왼쪽으로 갈 수 있을 경우
 				j--;	// 갈 수 있을때까지 왼쪽으로
 				direction = -1;
@@ -62,7 +62,7 @@ public class P005_SWEA1210_Ladder1 {
 				direction = 1;
 			}
 			if(direction == 1) {	// 오른쪽 방향으로 다 갔으면
-				i++;				// 아래로 한칸 내려
+				i++;				// 아래로 한칸 내려가
 				continue;			// 다시 while 처음으로
 			}
 			i++;	// 좌 우 갈 곳 없을 경우 아래로
