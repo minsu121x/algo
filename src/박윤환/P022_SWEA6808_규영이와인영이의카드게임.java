@@ -14,7 +14,7 @@ public class P022_SWEA6808_규영이와인영이의카드게임 {
 	static boolean[] isSelected;	// 숫자가 선택됐는지 기록하는 배열
 
 	public static void main(String[] args) throws Exception {
-		System.setIn(new FileInputStream("s_input.txt"));
+//		System.setIn(new FileInputStream("s_input.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		
