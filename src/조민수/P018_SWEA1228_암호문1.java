@@ -17,7 +17,7 @@ public class P018_SWEA1228_암호문1 {
 			List<Integer> password=new ArrayList<>();
 			String st=br.readLine();//password
 			String[] str=st.split(" ");
-			for(int i=0;i<10;i++) {
+			for(int i=0;i<passwordlen;i++) {
 				password.add(Integer.parseInt(str[i]));
 			}
 			int input=Integer.parseInt(br.readLine());//입력받을 개수
@@ -30,16 +30,16 @@ public class P018_SWEA1228_암호문1 {
 				if(str[j].equals("I")) {//여기부터 시작
 					int index=Integer.parseInt(str[++j]);//추가할 자리
 					int len=Integer.parseInt(str[++j]);//추가할 길이
-					
-					if(index>9) {
+					j++;//이제부터 숫자
+					if(index>9) {//10까지만 볼거기때문에 무시 가능
 						continue;//무시가능
 					}
-					for(int k=1;k<=len;k++) {
+					for(int k=0;k<len;k++) {
 						if(index+k>9) {
 							break;
 						}
 						
-						password.add(index,(Integer.parseInt(str[j+k])));
+						password.add(index+k,(Integer.parseInt(str[j+k])));
 					}
 					
 				}	
