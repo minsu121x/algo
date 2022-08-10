@@ -1,4 +1,4 @@
-package 박윤환;
+package 박윤환; 
 
 public class P025_BJ16926_배열돌리기1 {
 
