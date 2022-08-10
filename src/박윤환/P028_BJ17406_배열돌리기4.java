@@ -81,7 +81,7 @@ public class P028_BJ17406_배열돌리기4 {
 		M = Integer.parseInt(st[1]);	// 배열 열 크기
 		K = Integer.parseInt(st[2]);	// 연산 개수
 		arr = new int[N+1][M+1];	// 배열 선언
-		opr = new int[K][3];
+		opr = new int[K][3];		// 연산 저장 배열
 		
 		for(int i=1; i<=N; i++) {
 			st = br.readLine().split(" ");
