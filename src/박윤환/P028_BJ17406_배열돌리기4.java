@@ -1,0 +1,111 @@
+package 박윤환;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class P028_BJ17406_배열돌리기4 {
+
+	static final int[] dx= {1, 0, -1, 0};	// 하, 우, 상, 좌
+	static final int[] dy= {0, 1, 0, -1};	// 하, 우, 상, 좌
+	
+	static int N, M, K, min;
+	static int[][] arr, opr, permOpr;
+	static boolean[] visited;
+	
+	// 연산 순서를 정하는 메소드
+	static void perm(int cnt) {
+		if(cnt == K) {
+			int[][] newArr = arr.clone();
+			for(int i=0; i<K; i++) {
+				newArr = turnArr(newArr, permOpr[i][0], permOpr[i][1], permOpr[i][2]);
+			}
+			for(int i=1; i<=N; i++) {
+				int sum = 0;
+				for(int j=1; j<=M; j++) {
+					sum += newArr[i][j];
+				}
+				if(sum < min) {
+					min = sum;
+				}
+			}
+			return;
+		}
+		
+		for(int i=0; i<K; i++) {
+			if(!visited[i]) {
+				visited[i] = true;
+				permOpr[cnt] = opr[i];
+				perm(cnt+1);
+				
+				visited[i] = false;
+			}
+		}
+	}
+	
+	// 배열을 돌리는 메소드
+	static int[][] turnArr(int[][] array, int r, int c, int s) {
+			
+		for(int i=1; i<=s; i++) {
+			int x1 = r - i;
+			int y1 = c - i;
+			
+			int temp = array[x1][y1];
+			int dir = 0;
+			
+			while(dir < 4) {
+				int nx = x1 + dx[dir];
+				int ny = y1 + dy[dir];
+				
+				if(nx < r-i || nx > r+i || ny < c-i || ny > c+i) {
+					dir++;
+				} else {
+					array[x1][y1] = array[nx][ny];
+					x1 = nx;
+					y1 = ny;
+				}
+			}
+			
+			array[x1][y1+1] = temp;
+		}
+		
+		return array;
+		
+	}
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		String[] st = br.readLine().split(" ");
+		N = Integer.parseInt(st[0]);	// 배열 행 크기
+		M = Integer.parseInt(st[1]);	// 배열 열 크기
+		K = Integer.parseInt(st[2]);	// 연산 개수
+		arr = new int[N+1][M+1];	// 배열 선언
+		opr = new int[K][3];
+		
+		for(int i=1; i<=N; i++) {
+			st = br.readLine().split(" ");
+			for(int j=1; j<=M; j++) {
+				arr[i][j] = Integer.parseInt(st[j-1]);
+			}
+		}
+		
+		// K번의 연산 수행
+		for(int i=0; i<K; i++) {
+			st = br.readLine().split(" ");
+			for(int j=0; j<3; j++) {
+				opr[i][j] = Integer.parseInt(st[j]);
+			}
+		}
+		
+		visited = new boolean[K];
+		permOpr = new int[K][3];
+		min = 5000;		// 최대로 나올수 있는 수 있는 합이 5000이므로 min값으로 설정
+		perm(0);
+		
+		sb.append(min);
+		
+		System.out.print(sb);
+	}
+	
+}
