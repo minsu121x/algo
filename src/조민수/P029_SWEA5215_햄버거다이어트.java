@@ -50,6 +50,7 @@ public class P029_SWEA5215_햄버거다이어트 {
 				ingr[i][1]=Integer.parseInt(st[1]);
 			}
 			isselected=new boolean[N];
+			max=0;
 			subset(0);
 			sb.append("#").append("tc").append(" ").append(max).append("\n");
 		}
