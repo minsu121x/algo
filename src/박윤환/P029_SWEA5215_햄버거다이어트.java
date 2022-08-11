@@ -38,7 +38,7 @@ public class P029_SWEA5215_햄버거다이어트 {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		System.setIn(new FileInputStream("sample_input.txt"));
+//		System.setIn(new FileInputStream("sample_input.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		
