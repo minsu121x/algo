@@ -56,6 +56,7 @@ public class P029_SWEA5215_햄버거다이어트 {
 			}
 			
 			isSelected = new boolean[N];	// 재료 선택 기록
+			max = 0;	// 최대값 초기화
 			subset(0);
 			
 			sb.append("#").append(tc).append(" ").append(max).append("\n");
