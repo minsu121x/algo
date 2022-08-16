@@ -4,56 +4,69 @@ import java.io.*;
 import java.util.*;
 
 public class P022_SWEA6808_규영이와인영이의카드게임 {
-	static boolean[] numeric = new boolean[19];
-	static boolean[] ck;
-	static int[] bd1 = new int[9];
-	static int[] bd2 = new int[9];
-	static int win,lose;
-	static void permu(int r,int sum1, int sum2) {
-		if(sum1 > (171/2) || sum2 > (171/2)) { //둘 중 하나라도 기준점을 넘어가면,
-			int oth = 1;
-			for(int tmp = 9-r; tmp>0; tmp--) {
-				oth *=tmp; //나머지 라운드에 대해 팩토리얼 계산만 한다.
-			}
-            //이기고 있는 쪽에 oth 를 더해준다.
-			if(sum1 > sum2) win+= oth; 
-			else lose+= oth;
-			return;
-		}
-		for(int i=0; i<9; i++) {
-			if(!ck[i]) {
-				ck[i]=true;
-				if(bd1[r]>bd2[i]) {
-					permu(r+1,sum1+bd1[r]+bd2[i],sum2);
-				}else {
-					permu(r+1,sum1,sum2+bd1[r]+bd2[i]);
+	
+	
+	static int[] IYcard;//인영이가 받을 카드
+	static int[] GYcard;//규영이가 받을 카드
+	static boolean[] isSelected;//인영이 카드순열을 만들기 위한 isSelected
+	static int win;//이긴 횟수
+	static int lose;//진 횟수
+	
+	static void perm(int cnt) {
+		if(cnt==9) {//9장 다뽑았다
+			int IYsum=0; //인영이 포인트;
+			int GYsum=0;//규영이 포인트;
+			for(int i=0;i<9;i++) {//누가 이기나 보자
+				if(IYcard[i]>GYcard[i]) {
+
+					 IYsum+=IYcard[i]+GYcard[i];
+
 				}
-				ck[i]=false;
+				else {
+					 GYsum+=IYcard[i]+GYcard[i];
+				}
+				if(IYsum>85) {//총합 171의 절반만 넘기면 이미 승리
+					lose++;
+					return;
+				}
+				else if(GYsum>85) {
+					win++;
+					return;
+				}
 			}
 		}
+		
+		for(int i=1;i<19;i++) {//전체 카드에 대해
+			if(isSelected[i]) {
+				continue;//규영이가 뽑았거나 이미 골라졌다
+			}
+			IYcard[cnt]=i;
+			isSelected[i]=true;
+			
+			perm(cnt+1);
+			isSelected[i]=false;
+		}
+		
 	}
+
 	public static void main(String[] args) throws Exception {
 		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = null;
-		int T = Integer.parseInt(br.readLine());
-		for(int t=1; t<=T; t++) {
-			win = lose = 0;
-			ck = new boolean[9];
-			numeric = new boolean[19];
-			st = new StringTokenizer(br.readLine());
-			for(int i=0; i<9; i++) {
-				bd1[i]=Integer.parseInt(st.nextToken());
-				numeric[bd1[i]]=true;
+		int T= Integer.parseInt(br.readLine());
+		for(int tc=1;tc<=T;tc++) {
+			IYcard=new int[9];
+			GYcard=new int[9];
+			isSelected=new boolean[19];//1~18 저장 위해 19칸 생성
+			String[]st =br.readLine().split(" ");
+			for(int i=0;i<9;i++) {
+				int temp=Integer.parseInt(st[i]);
+				GYcard[i]=temp;//규영이 카드 저장
+				isSelected[temp]=true;//규영이가 뽑은 카드 기록	
 			}
-			int tmp=0;
-			for(int i=1; i<=18; i++) {
-				if(!numeric[i])
-					bd2[tmp++]=i;
-			}
-			permu(0,0,0);
-			sb.append("#"+t+" "+win+" "+lose+"\n");
+			win=0;//횟수 초기화
+			lose=0;
+			perm(0);
+			System.out.println("#"+tc+" "+win+" "+lose);
 		}
-		System.out.println(sb.toString());
 	}	
 }
