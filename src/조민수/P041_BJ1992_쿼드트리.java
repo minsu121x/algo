@@ -20,23 +20,18 @@ public class P041_BJ1992_쿼드트리 {
             return;
         }
 
-        boolean same = true;
-        // 현재 크기내 원소가 
+        int sum = 0;
+        // 현재 크기내 원소합을 구함
         for(int i=r; i<r+n; i++) {
-            for(int j=c+1; j<c+n; j++) {//내값과 내 앞값 비교를 위해 시작을 +1로
-            	if(arr[i][j]!=arr[i][j-1]) {//내값과 내 앞값 비교
-            		same=false;
-            		break;//같지않으면 바로 탈출
-            	}
-            }
-            if(!same) {
-            	break;//같지않으면 바로 탈출
+            for(int j=c; j<c+n; j++) {
+                sum += arr[i][j];
             }
         }
-        if(same) {  // 값이 다 같다
-            sb.append(arr[r][c]);//아무값이나 하나 넣어주면 됨 편의상 제일 앞값
-        } 
-        else {    // 다르면 4등분 분할해서 연산반복
+        if(sum == 0) {  // 합이 0이다-> 값이 모두 0이다 ->0찍고 끝
+            sb.append(0);
+        } else if(sum == n*n) { // 합이 n*n이다-> 값이 모두 1이다 ->1찍고 끝
+            sb.append(1);
+        } else {    // 둘다 아니다-> 4등분해서 분할정복
             sb.append("(");
             // 1사분면
             dnq(n / 2, r, c);
