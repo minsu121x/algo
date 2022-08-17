@@ -39,7 +39,16 @@ public class P036_BJ1074_Z {
 		int size=(int)Math.pow(2,N);
 		Z(size,r,c);
 		System.out.println(num);
-		
+		int num1=0;
+		int num2=0;
+		for(int i=1;i<15;i++) {
+			int si=(int)Math.pow(2, i);
+			 num1 += 3*si*si/4;
+			 num2 += si*si/4*3;
+			 System.out.println(num1 == num2);
+		}
+	   
+		System.out.println();
 		}
 
 }
