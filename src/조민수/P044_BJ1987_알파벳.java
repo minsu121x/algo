@@ -15,25 +15,23 @@ public class P044_BJ1987_알파벳 {
 		
 		
 		static void dfs(int depth, int r, int c) {
-			if(depth==R*C){
+			if(depth==R*C){// 기저조건 -> 다돌았으면 return
 				max=Math.max(max, log.size());
 				return;
 			}
-			if(depth!=0&&log.indexOf(board[r][c])!=-1) {
+			if(log.indexOf(board[r][c])!=-1) {//이미 존재한다
 				max=Math.max(max,log.size());
-				log.remove(log.size()-1);
+				
 				return;
 			}
-			
-			for(int i=0;i<4;i++){
-				if(r+dx[i]<0||r+dx[i]>=R||c+dy[i]<0||c+dy[i]>=C) {
-					continue;
+			log.add(board[r][c]);//이동 가능한 칸 추가
+			for(int i=0;i<4;i++){//상하좌우로 이동
+				if(r+dx[i]<0||r+dx[i]>=R||c+dy[i]<0||c+dy[i]>=C) {//이동가능하지않으면
+					continue;//무시하고 다음
 				}
-				log.add(board[r+dx[i]][c+dy[i]]);
-				
-				dfs(depth+1,r+dx[i],c+dy[i]);
-				
-			}
+				dfs(depth+1,r+dx[i],c+dy[i]);//이동
+			}	
+			log.remove(log.size()-1);//내가 간 위치가 중복이다 -> 기록에서 제외
 		}
 		
 		
@@ -41,8 +39,8 @@ public class P044_BJ1987_알파벳 {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String []st =br.readLine().split(" ");
-		int R=Integer.parseInt(st[0]);
-		int C=Integer.parseInt(st[1]);
+		R=Integer.parseInt(st[0]);
+		C=Integer.parseInt(st[1]);
 		board=new char[R][C];
 		
 		for (int i = 0; i <R; i++) {
@@ -52,7 +50,6 @@ public class P044_BJ1987_알파벳 {
 			}
 		}
 		log=new ArrayList<>();
-		log.add(board[0][0]);
 		dfs(0,0,0);
 		System.out.println(max);
 	
