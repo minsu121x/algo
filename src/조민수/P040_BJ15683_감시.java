@@ -25,7 +25,7 @@ public class P040_BJ15683_감시 {
 	            	int num=Integer.parseInt(st[j]);
 	                office[i][j] = num;
 	                if(num>=1&&num<=5) {//cctv 유무 판단
-	                	cctv[num]++;
+	                //cctv[num]++;
 	                }
 	            }
 		
