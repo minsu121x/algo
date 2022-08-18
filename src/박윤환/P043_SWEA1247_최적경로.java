@@ -16,7 +16,7 @@ public class P043_SWEA1247_최적경로 {
             min = Math.min(min, sum+map[n][1]); // 집까지 거리를 더하고 최소값 비교
             return;
         }
-        // 모든 좌표를 목적지로 반복
+        // 모든 좌표를 목적지로 정하는 것을 반복
         for(int i=0; i<N+2; i++) {
             if(i==1) continue;  // 집은 마지막에 방문해야하므로 패스
             if(n != i && !visited[i]) { // 현재 위치가 아니면서 방문 안한 곳이라면
