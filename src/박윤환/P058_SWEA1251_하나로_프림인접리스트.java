@@ -10,15 +10,15 @@ public class P058_SWEA1251_하나로_프림인접리스트 {
 
     static class Node {
         int vertex;
-        long weight;
+        double weight;
         Node next;
 
-        public Node(int vertex, long weight) {
+        public Node(int vertex, double weight) {
             this.vertex = vertex;
             this.weight = weight;
         }
 
-        public Node(int vertex, long weight, Node next) {
+        public Node(int vertex, double weight, Node next) {
             this.vertex = vertex;
             this.weight = weight;
             this.next = next;
@@ -27,8 +27,8 @@ public class P058_SWEA1251_하나로_프림인접리스트 {
 
     static double E;
 
-    static long distance(int x1, int y1, int x2, int y2) {
-        return Math.round(E * Math.abs(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2)));
+    static double distance(int x1, int y1, int x2, int y2) {
+        return E * Math.abs(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
     }
 
     public static void main(String[] args) throws Exception {
@@ -57,15 +57,15 @@ public class P058_SWEA1251_하나로_프림인접리스트 {
                 }
             }
 
-            long[] minEdge = new long[N];     // 각 정점 입장에서 신장트리에 포함된 정점과의 간선 비용중 최소비용
+            double[] minEdge = new double[N];     // 각 정점 입장에서 신장트리에 포함된 정점과의 간선 비용중 최소비용
             boolean[] visited = new boolean[N]; // 신장트리에 포함 여부
 
             Arrays.fill(minEdge, Integer.MAX_VALUE);
 
-            minEdge[0] = 0L;
-            long result = 0L;
+            minEdge[0] = 0;
+            double result = 0;
 
-            PriorityQueue<Node> pQueue = new PriorityQueue<>((v1, v2) -> Long.compare(v1.weight, v2.weight));
+            PriorityQueue<Node> pQueue = new PriorityQueue<>((v1, v2) -> Double.compare(v1.weight, v2.weight));
             pQueue.offer(new Node(0, minEdge[0]));
 
             int cnt = 0;
