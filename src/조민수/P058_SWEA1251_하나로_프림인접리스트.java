@@ -4,22 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class P058_SWEA1251_하나로_프림인접리스트 {
 
 	static class Node{
 		int vertex;
-		long weight;
+		double weight;
 		Node next;
-		public Node(int to, long weight, Node next) {
+		public Node(int vertex, double weight, Node next) {
 
-			this.vertex = to;
+			this.vertex = vertex;
 			this.weight = weight;
 			this.next = next;
 		}
-		public Node(int to, long weight) {
-			this.vertex = to;
+		public Node(int vertex, double weight) {
+			this.vertex = vertex;
 			this.weight = weight;
 		}
 	 
@@ -30,10 +31,10 @@ public class P058_SWEA1251_하나로_프림인접리스트 {
 	
 	
 	
-	static int N;
+
 	static double E;
-	static long distance(int x1, int y1, int x2, int y2) {//거리 가중치
-		return Math.round(E*Math.abs(Math.pow(x2-x1,2)+Math.pow(y2-11,2)));
+	static double distance(int x1, int y1, int x2, int y2) {//거리 가중치
+		return E*Math.abs(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -44,18 +45,19 @@ public class P058_SWEA1251_하나로_프림인접리스트 {
 		int T= Integer.parseInt(br.readLine());
 		
 		for(int tc=1;tc<=T;tc++) {
-			N=Integer.parseInt(br.readLine());
+			int N=Integer.parseInt(br.readLine());
 			int[]X= new int[N];
 			int[]Y= new int[N];	
 			
 			String[]st1=br.readLine().split(" ");
 			String[]st2=br.readLine().split(" ");
-			Node[] adjList=new Node[N];
+			
 			for(int i=0;i<N;i++) {
 				X[i]=Integer.parseInt(st1[i]);
 				Y[i]=Integer.parseInt(st2[i]);
 			}
 			E=Double.parseDouble(br.readLine());
+			Node[] adjList=new Node[N];
 			for(int i=0;i<N;i++) {
 				for(int j=0;j<N;j++) {
 					if(i==j)continue;
@@ -63,14 +65,15 @@ public class P058_SWEA1251_하나로_프림인접리스트 {
 				}
 			}
 			
-			long[] minEdge =new long[N];
+			double[] minEdge =new double[N];
 			boolean[] visited = new boolean[N];//신장트리에 포함여부
 			
 			Arrays.fill(minEdge,Long.MAX_VALUE);
 			
 			minEdge[0]=0;
-			Long result=0L;
-			PriorityQueue<Node> pQueue = new PriorityQueue<>((v1,v2)->Long.compare(v1.weight,v2.weight));
+			double result=0;
+			PriorityQueue<Node> pQueue = new PriorityQueue<>(Comparator.comparingDouble(v -> v.weight));
+			pQueue.offer(new Node(0, minEdge[0])); // 시작점인 0번 정점 추가
 			int cnt=0;
 			while(!pQueue.isEmpty()) {
 				Node minVertex= pQueue.poll();
@@ -86,7 +89,7 @@ public class P058_SWEA1251_하나로_프림인접리스트 {
 					}
 				}
 			}
-			System.out.println(result);
+			System.out.println("#"+tc+" "+Math.round(result));
 		}
 	}
 
