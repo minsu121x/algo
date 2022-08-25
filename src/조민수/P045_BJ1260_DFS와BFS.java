@@ -61,6 +61,7 @@ public class P045_BJ1260_DFS와BFS {
 		Arrays.fill(visited,false);//방문 배열 초기화
 		System.out.println();
 		bfsQ=new ArrayDeque<Integer>();
+	
 		bfsQ.offer(start);
 		visited[start]=true;
 		doBFS();
