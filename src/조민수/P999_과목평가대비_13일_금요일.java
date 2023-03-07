@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import com.sun.imageio.plugins.common.InputStreamAdapter;
 
 public class P999_과목평가대비_13일_금요일 {
 
