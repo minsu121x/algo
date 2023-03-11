@@ -22,28 +22,51 @@ public class P103_BJ16937_두스티커 {
             sticker[i][1]=Integer.parseInt(str[1]);
         }
         for(int i=0;i<N;i++){
-            for(int j=i+1;j<N;j++){
-               stick(sticker[i],sticker[j]);
+            for(int j=i+1;j<N;j++){ // 1번-2번부터 N-1번 N번까지 순서대로 비교
+               IsStick(sticker[i],sticker[j]);
             }
         }
         System.out.println(answer);
     }
-    public static void stick(int[] first, int[] second){
+    public static void IsStick(int[] first, int[] second){
         int first_h=first[0];
         int first_w=first[1];
         int second_h=second[0];
-        int second_w=second[0];
+        int second_w=second[1];
+        //경우의 수
+        //(수직/수평) * (1번스티커 무회전/회전) * (2번스티커 무회전/회전) = 8가지
+        //8가지 경우를 비교해 가능한 경우 중 현재 최댓값보다 클 경우 갱신
         int sticker_size=first_h*first_w+second_h*second_w;
-        if(first_h+second_h<=H&&first_w+second_w<=W&&answer<sticker_size){
+        if(first_h+second_h<=H&&Math.max(first_w,second_w)<=W&&answer<sticker_size){
+            //수직 - 무회전 - 무회전
             answer=sticker_size;
         }
-        else if(first_h+second_w<=H&&first_w+second_h<=W&&answer<sticker_size){
+        else if(first_h+second_w<=H&&Math.max(first_w,second_h)<=W&&answer<sticker_size){
+            //수직 - 무회전 - 회전
             answer=sticker_size;
         }
-        else if(first_w+second_h<=H&&first_h+second_w<=W&&answer<sticker_size){
+        else if(first_w+second_h<=H&&Math.max(first_h,second_w)<=W&&answer<sticker_size){
+            //수직 - 회전 - 무회전
             answer=sticker_size;
         }
-        else if(first_w+second_w<=H&&first_h+second_h<=W&&answer<sticker_size){
+        else if(first_w+second_w<=H&&Math.max(first_h,second_h)<=W&&answer<sticker_size){
+            //수직 - 회전 - 회전
+            answer=sticker_size;
+        }
+        else if(first_w+second_w<=W&&Math.max(first_h,second_h)<=H&&answer<sticker_size){
+            //수평 - 회전 - 회전
+            answer=sticker_size;
+        }
+        else if(first_h+second_h<=W&&Math.max(first_w,second_w)<=H&&answer<sticker_size){
+            //수평 - 무회전 - 무회전
+            answer=sticker_size;
+        }
+        else if(first_h+second_w<=W&&Math.max(first_w,second_h)<=H&&answer<sticker_size){
+            //수평 - 무회전 - 회전
+            answer=sticker_size;
+        }
+        else if(first_w+second_h<=W&&Math.max(first_h,second_w)<=H&&answer<sticker_size){
+            //수평 - 회전 - 무회전
             answer=sticker_size;
         }
     }
