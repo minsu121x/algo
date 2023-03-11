@@ -26,7 +26,7 @@ public class P103_BJ16937_두스티커 {
                IsStick(sticker[i],sticker[j]);
             }
         }
-        System.out.println(answer);
+        System.out.println(answer);//결과출력
     }
     public static void IsStick(int[] first, int[] second){
         int first_h=first[0];
