@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class P107_BJ1421_나무꾼이다솜 {
+public class P108_BJ1421_나무꾼이다솜 {
     static int N,C,W,max,result;
 
     static int[] woods;

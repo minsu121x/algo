@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class P108_BJ1500_최대곱 {
+public class P109_BJ1500_최대곱 {
     static int S,K;
     static long result;
     static int[] num;
