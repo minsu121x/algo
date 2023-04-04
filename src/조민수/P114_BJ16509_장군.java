@@ -40,10 +40,11 @@ public class P114_BJ16509_장군 {
                         //장애물이 없는지 체크
 
                         case 0:
-                            //상좌
+                            //상좌로 이동 ->x 위로 1번 , 상좌 대각 2번 이동
                             for(int j=0;j<2;j++){
                                 if(x-j-1==kingX&&y-j==kingY){
-                                    flag=true;
+                                    //x좌표는 위로 한칸 이동-> -1 하고 좌상 대각이동
+                                    flag=true;//가는길에 왕을 만나면 체크
                                     break;
                                 }
                             }
